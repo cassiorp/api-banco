@@ -26,7 +26,7 @@ public class ClienteController {
     @GetMapping
     @ResponseBody
     public List<Cliente> findAll(@RequestParam(value = "nome", required = false) String nome) {
-        if(nome.equals(null))
+        if(nome == null)
             return this.clienteService.findAll();
         return this.clienteService.findByNomeStartingWith(nome);
     }
