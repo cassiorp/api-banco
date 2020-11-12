@@ -32,6 +32,10 @@ public class ClienteService {
                 .orElseThrow(() -> new ClienteNaoEncontradoException("Cliente nao encontrado"));
     }
 
+    public List<Cliente> findByNomeStartingWith(String nome) {
+        return clienteRepository.findByNomeStartingWith(nome);
+    }
+
     public Cliente addConta(Cliente cliente, Conta conta) {
         cliente.setConta(conta);
         return this.clienteRepository.save(cliente);
