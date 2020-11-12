@@ -23,6 +23,10 @@ public class ClienteService {
                 clienteDTO.getCpf(), clienteDTO.getSenha()));
     }
 
+    public Cliente save(Cliente cliente){
+        return this.clienteRepository.save(cliente);
+    }
+
     public List<Cliente> findAll() {
         return this.clienteRepository.findAll();
     }
