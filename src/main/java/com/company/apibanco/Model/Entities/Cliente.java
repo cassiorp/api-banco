@@ -22,5 +22,5 @@ public class Cliente {
         this.cpf = cpf;
         this.senha = senha;
     }
-    
+
 }
