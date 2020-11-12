@@ -6,7 +6,7 @@ import com.company.apibanco.Model.DTOs.UpdateSenhaDTO;
 import com.company.apibanco.Model.Entities.Cliente;
 import com.company.apibanco.Model.Entities.Conta;
 import com.company.apibanco.Model.Exceptions.ClienteNaoEncontradoException;
-import com.company.apibanco.Model.Repository.ClienteRepository;
+import com.company.apibanco.Model.Repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

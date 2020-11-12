@@ -1,4 +1,4 @@
-package com.company.apibanco.Model.Repository;
+package com.company.apibanco.Model.Repositories;
 
 import com.company.apibanco.Model.Entities.Conta;
 import org.springframework.data.mongodb.repository.MongoRepository;
