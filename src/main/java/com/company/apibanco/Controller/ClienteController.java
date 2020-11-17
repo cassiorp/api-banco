@@ -7,8 +7,10 @@ import com.company.apibanco.Model.Entities.Cliente;
 import com.company.apibanco.Model.Services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -46,5 +48,9 @@ public class ClienteController {
         this.clienteService.delete(id);
     }
 
+    @PostMapping(value = "/{id}/picture")
+    public URI uploadProfilePicture(@RequestParam(name = "file") MultipartFile file, @PathVariable String id) {
+        return this.clienteService.uploadFoto(file,id);
+    }
 
 }

@@ -9,7 +9,9 @@ import com.company.apibanco.Model.Exceptions.ClienteNaoEncontradoException;
 import com.company.apibanco.Model.Repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URI;
 import java.util.List;
 
 @Service
@@ -17,6 +19,10 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private S3Service s3Service;
+
 
     public Cliente save(ClienteDTO clienteDTO) {
         return this.clienteRepository.save(new Cliente(clienteDTO.getNome(), clienteDTO.getEmail(),
@@ -53,6 +59,16 @@ public class ClienteService {
 
     public void delete(String id) {
         this.clienteRepository.deleteById(id);
+    }
+
+
+    public URI uploadFoto(MultipartFile multipartFile, String id){
+        Cliente cliente = this.find(id);
+        String uriString = cliente.getNome() + "-" + cliente.getId();
+        URI uri = s3Service.uploadFile(multipartFile, uriString);
+        cliente.setFoto(uri.toString());
+        this.clienteRepository.save(cliente);
+        return uri;
     }
 
 }

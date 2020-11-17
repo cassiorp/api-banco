@@ -40,7 +40,6 @@ public class ContaService {
         return this.contaRepository.findAllByAgencia(agencia);
     }
 
-    //criar metodo que verifica se cliente tem conta
     public Double deposito(String idCliente, ValorDTO valorDTO) {
 
         Cliente cliente = this.clienteService.find(idCliente);

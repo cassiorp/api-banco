@@ -32,9 +32,9 @@ public class ContaController {
         return this.contaService.deposito(idCliente, valorDTO);
     }
 
-    @PatchMapping(value = "/saque/{id}")
-    public Double sacar(@PathVariable String id, @RequestBody ValorDTO valorDTO) {
-        return this.contaService.saque(id, valorDTO);
+    @PatchMapping(value = "/saque/{idCliente}")
+    public Double sacar(@PathVariable String idCliente, @RequestBody ValorDTO valorDTO) {
+        return this.contaService.saque(idCliente, valorDTO);
     }
 
 }

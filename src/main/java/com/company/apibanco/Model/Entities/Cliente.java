@@ -14,6 +14,7 @@ public class Cliente {
     private String email;
     private String cpf;
     private String senha;
+    private String foto;
     private Conta conta;
 
     public Cliente(String nome, String email, String cpf, String senha) {
