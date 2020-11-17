@@ -25,6 +25,4 @@ public class ClienteDTO {
     @NotEmpty
     private String senha;
 
-
-
 }

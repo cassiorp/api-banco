@@ -8,7 +8,7 @@ spring:
       database: banco
       host: localhost
       port: 27017
-      password: password
-      username: root
+#      password: password
+#      username: root
 
 

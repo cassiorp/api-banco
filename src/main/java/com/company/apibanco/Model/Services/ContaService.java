@@ -64,7 +64,7 @@ public class ContaService {
         if(!seTemConta(cliente)) throw new ClienteSemContaException("Cliente nao possui conta!");
 
         Conta conta = cliente.getConta();
-        if(valorDTO.getValor() > conta.getSaldo())throw  new SaldoInsuficienteException("Saldo insuficiente");
+        if(valorDTO.getValor() > conta.getSaldo()) throw new SaldoInsuficienteException("Saldo insuficiente");
 
         conta.setSaldo(conta.getSaldo() - valorDTO.getValor());
         cliente.setConta(conta);
