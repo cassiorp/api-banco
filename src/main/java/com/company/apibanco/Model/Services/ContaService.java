@@ -31,11 +31,6 @@ public class ContaService {
         return conta;
     }
 
-    public Conta find(String id) {
-        return contaRepository.findById(id)
-                .orElseThrow(() -> new ContaNaoEncontradaException("Conta nao encontrada"));
-    }
-
     public List<Conta> findAllByAgencia(String agencia) {
         return this.contaRepository.findAllByAgencia(agencia);
     }

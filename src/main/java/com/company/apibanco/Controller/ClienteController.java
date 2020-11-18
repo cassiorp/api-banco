@@ -6,6 +6,7 @@ import com.company.apibanco.Model.DTOs.UpdateSenhaDTO;
 import com.company.apibanco.Model.Entities.Cliente;
 import com.company.apibanco.Model.Services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +22,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Cliente save(@RequestBody @Valid ClienteDTO clienteDTO){
         return this.clienteService.save(clienteDTO);
     }
@@ -39,7 +41,7 @@ public class ClienteController {
     }
 
     @PatchMapping(value = "/novasenha/{id}")
-    public Cliente updateSenha(@PathVariable String id, @RequestBody UpdateSenhaDTO updateSenhaDTO){
+    public Cliente updateSenha(@PathVariable String id, @Valid @RequestBody UpdateSenhaDTO updateSenhaDTO){
         return this.clienteService.updateSenha(id, updateSenhaDTO);
     }
 
