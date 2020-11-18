@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
@@ -46,33 +45,32 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleExceptionInternal(ex, problema, headers, status, request);
     }
 
-
     @ExceptionHandler(ClienteNaoEncontradoException.class)
-    public ResponseEntity<StandardError> clienteNaoEncontrado(ClienteNaoEncontradoException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> clienteNaoEncontrado(ClienteNaoEncontradoException e) {
         StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage(), OffsetDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
 
     @ExceptionHandler(ClienteComContaException.class)
-    public ResponseEntity<StandardError> clienteComConta(ClienteComContaException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> clienteComConta(ClienteComContaException e) {
         StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), OffsetDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 
     @ExceptionHandler(ClienteSemContaException.class)
-    public ResponseEntity<StandardError> clienteSemConta(ClienteSemContaException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> clienteSemConta(ClienteSemContaException e) {
         StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), OffsetDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 
     @ExceptionHandler(SaldoInsuficienteException.class)
-    public ResponseEntity<StandardError> semSaldo(SaldoInsuficienteException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> semSaldo(SaldoInsuficienteException e) {
         StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), OffsetDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 
     @ExceptionHandler(ValorInvalidoException.class)
-    public ResponseEntity<StandardError> valorInvalido(ValorInvalidoException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> valorInvalido(ValorInvalidoException e) {
         StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), OffsetDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
